@@ -23,6 +23,7 @@ var/
 .php-cs-fixer.cache
 .phpunit.result.cache
 .phpstan.cache/
+.deptrac.cache
 
 # IDE
 .idea/
