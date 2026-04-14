@@ -1,0 +1,42 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vendor / dependencies
+vendor/
+node_modules/
+
+# Build artifacts
+dist/
+build/
+*.pb.go
+services/*/gen/
+
+# Go
+*.test
+*.out
+coverage.out
+
+# PHP
+var/
+.php-cs-fixer.cache
+.phpunit.result.cache
+.phpstan.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Docker
+docker-compose.override.yml
