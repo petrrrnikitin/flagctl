@@ -72,6 +72,22 @@ services:
       retries: 15
       start_period: 30s
 
+  auth:
+    build:
+      context: ../services/auth
+      dockerfile: Dockerfile
+    environment:
+      AUTH_GRPC_ADDR: :50051
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 50051 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
   api-gateway:
     build:
       context: ../services/api-gateway
@@ -85,6 +101,8 @@ services:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      auth:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:8080/health | grep -q 'ok'"]
