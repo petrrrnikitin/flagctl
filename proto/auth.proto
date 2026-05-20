@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/petrrrnikitin/flagctl/services/auth/gen/auth/v1;authv1";
+
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+}
+
+message RegisterRequest {
+  string email    = 1;
+  string password = 2;
+  string name     = 3;
+}
+
+message RegisterResponse {
+  string tenant_id     = 1;
+  string api_key       = 2;
+  string access_token  = 3;
+  string refresh_token = 4;
+}
+
+message LoginRequest {
+  string email    = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
+  string tenant_id     = 3;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  string tenant_id  = 1;
+  bool   valid      = 2;
+  int64  expires_at = 3;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
+}
