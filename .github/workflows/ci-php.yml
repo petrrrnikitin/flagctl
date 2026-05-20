@@ -19,6 +19,8 @@ jobs:
   php:
     name: PHP — api-gateway
     runs-on: ubuntu-latest
+    env:
+      APP_ENV: test
     defaults:
       run:
         working-directory: services/api-gateway
