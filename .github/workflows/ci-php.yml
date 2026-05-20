@@ -41,7 +41,7 @@ jobs:
           restore-keys: composer-
 
       - name: Install dependencies
-        run: composer install --no-progress --no-interaction --prefer-dist
+        run: composer install --no-progress --no-interaction --prefer-dist --no-scripts
 
       - name: PHPUnit
         run: vendor/bin/phpunit --no-coverage
