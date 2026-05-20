@@ -2,7 +2,7 @@ name: CI — PHP
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
     paths:
       - "services/api-gateway/**"
       - ".github/workflows/ci-php.yml"
